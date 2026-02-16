@@ -1,6 +1,6 @@
 {
 	"name": "set-extras",
-	"version": "0.0.0-development",
+	"version": "1.0.0",
 	"description": "Set algebra operations — union, intersection, difference, symmetric difference, subset, superset",
 	"license": "MIT",
 	"repository": "mstuart/set-extras",
