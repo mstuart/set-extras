@@ -1,0 +1,44 @@
+{
+	"name": "set-extras",
+	"version": "0.0.0-development",
+	"description": "Set algebra operations — union, intersection, difference, symmetric difference, subset, superset",
+	"license": "MIT",
+	"repository": "mstuart/set-extras",
+	"funding": "https://github.com/sponsors/mstuart",
+	"author": {
+		"name": "Mark Stuart",
+		"email": "mstuart@users.noreply.github.com",
+		"url": "https://github.com/mstuart"
+	},
+	"type": "module",
+	"exports": {
+		"types": "./index.d.ts",
+		"default": "./index.js"
+	},
+	"sideEffects": false,
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"test": "xo && ava && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"keywords": [
+		"set",
+		"union",
+		"intersection",
+		"difference",
+		"symmetric",
+		"subset",
+		"superset",
+		"algebra"
+	],
+	"devDependencies": {
+		"ava": "^6.0.0",
+		"tsd": "^0.31.0",
+		"xo": "^0.60.0"
+	}
+}
