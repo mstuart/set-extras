@@ -8,15 +8,15 @@ import {
 	isSuperset,
 } from './index.js';
 
-const setA = new Set([1, 2, 3]);
-const setB = new Set([2, 3, 4]);
+const firstSet = new Set([1, 2, 3]);
+const secondSet = new Set([2, 3, 4]);
 
-expectType<Set<number>>(union(setA, setB));
-expectType<Set<number>>(intersection(setA, setB));
-expectType<Set<number>>(difference(setA, setB));
-expectType<Set<number>>(symmetricDifference(setA, setB));
-expectType<boolean>(isSubset(setA, setB));
-expectType<boolean>(isSuperset(setA, setB));
+expectType<Set<number>>(union(firstSet, secondSet));
+expectType<Set<number>>(intersection(firstSet, secondSet));
+expectType<Set<number>>(difference(firstSet, secondSet));
+expectType<Set<number>>(symmetricDifference(firstSet, secondSet));
+expectType<boolean>(isSubset(firstSet, secondSet));
+expectType<boolean>(isSuperset(firstSet, secondSet));
 
-expectError(union(setA, 'not a set'));
-expectError(intersection(setA, 'not a set'));
+expectError(union(firstSet, 'not a set'));
+expectError(intersection(firstSet, 'not a set'));
