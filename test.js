@@ -12,12 +12,12 @@ import {
 
 test('union combines two sets', t => {
 	const result = union(new Set([1, 2]), new Set([3, 4]));
-	t.deepEqual([...result].sort(), [1, 2, 3, 4]);
+	t.deepEqual([...result].toSorted((a, b) => a - b), [1, 2, 3, 4]);
 });
 
 test('union removes duplicates', t => {
 	const result = union(new Set([1, 2, 3]), new Set([2, 3, 4]));
-	t.deepEqual([...result].sort(), [1, 2, 3, 4]);
+	t.deepEqual([...result].toSorted((a, b) => a - b), [1, 2, 3, 4]);
 });
 
 test('union with empty sets', t => {
@@ -28,7 +28,7 @@ test('union with empty sets', t => {
 
 test('union with identical sets', t => {
 	const result = union(new Set([1, 2, 3]), new Set([1, 2, 3]));
-	t.deepEqual([...result].sort(), [1, 2, 3]);
+	t.deepEqual([...result].toSorted((a, b) => a - b), [1, 2, 3]);
 });
 
 test('union returns a new Set', t => {
@@ -42,7 +42,7 @@ test('union returns a new Set', t => {
 
 test('intersection finds common elements', t => {
 	const result = intersection(new Set([1, 2, 3]), new Set([2, 3, 4]));
-	t.deepEqual([...result].sort(), [2, 3]);
+	t.deepEqual([...result].toSorted((a, b) => a - b), [2, 3]);
 });
 
 test('intersection with disjoint sets', t => {
@@ -52,7 +52,7 @@ test('intersection with disjoint sets', t => {
 
 test('intersection with identical sets', t => {
 	const result = intersection(new Set([1, 2, 3]), new Set([1, 2, 3]));
-	t.deepEqual([...result].sort(), [1, 2, 3]);
+	t.deepEqual([...result].toSorted((a, b) => a - b), [1, 2, 3]);
 });
 
 test('intersection with empty set', t => {
@@ -76,7 +76,7 @@ test('difference removes elements in second set', t => {
 
 test('difference with disjoint sets', t => {
 	const result = difference(new Set([1, 2]), new Set([3, 4]));
-	t.deepEqual([...result].sort(), [1, 2]);
+	t.deepEqual([...result].toSorted((a, b) => a - b), [1, 2]);
 });
 
 test('difference with identical sets', t => {
@@ -91,7 +91,7 @@ test('difference with empty first set', t => {
 
 test('difference with empty second set', t => {
 	const result = difference(new Set([1, 2]), new Set());
-	t.deepEqual([...result].sort(), [1, 2]);
+	t.deepEqual([...result].toSorted((a, b) => a - b), [1, 2]);
 });
 
 test('difference returns a new Set', t => {
@@ -105,12 +105,12 @@ test('difference returns a new Set', t => {
 
 test('symmetricDifference finds elements in either but not both', t => {
 	const result = symmetricDifference(new Set([1, 2, 3]), new Set([2, 3, 4]));
-	t.deepEqual([...result].sort(), [1, 4]);
+	t.deepEqual([...result].toSorted((a, b) => a - b), [1, 4]);
 });
 
 test('symmetricDifference with disjoint sets', t => {
 	const result = symmetricDifference(new Set([1, 2]), new Set([3, 4]));
-	t.deepEqual([...result].sort(), [1, 2, 3, 4]);
+	t.deepEqual([...result].toSorted((a, b) => a - b), [1, 2, 3, 4]);
 });
 
 test('symmetricDifference with identical sets', t => {
@@ -191,8 +191,8 @@ test('set-returning functions return Set instances', t => {
 test('operations work with strings', t => {
 	const a = new Set(['apple', 'banana']);
 	const b = new Set(['banana', 'cherry']);
-	t.deepEqual([...union(a, b)].sort(), ['apple', 'banana', 'cherry']);
+	t.deepEqual([...union(a, b)].toSorted((x, y) => x.localeCompare(y)), ['apple', 'banana', 'cherry']);
 	t.deepEqual([...intersection(a, b)], ['banana']);
 	t.deepEqual([...difference(a, b)], ['apple']);
-	t.deepEqual([...symmetricDifference(a, b)].sort(), ['apple', 'cherry']);
+	t.deepEqual([...symmetricDifference(a, b)].toSorted((x, y) => x.localeCompare(y)), ['apple', 'cherry']);
 });
