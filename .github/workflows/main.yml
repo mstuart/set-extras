@@ -12,13 +12,14 @@ jobs:
         node-version:
           - 24
           - 22
-          - 20
-    # eslint-plugin-unicorn (pulled in via the xo devDependency) requires
-    # Node >=22 (it uses Iterator Helper methods absent from Node 20's
-    # runtime), so `npm test` cannot run at all on Node 20 until xo drops
-    # support for it or we do. Keep the leg for visibility without blocking
-    # merges on a toolchain limitation unrelated to this package's own code.
-    continue-on-error: ${{ matrix.node-version == 20 }}
+    # eslint-plugin-unicorn (pulled in via the xo devDependency) declares
+    # engines.node >=22 and crashes on startup under Node 20 (it uses
+    # Iterator Helper methods that runtime doesn't have at all) — a dev
+    # toolchain limitation, not a problem with this package's shipped code
+    # (package.json engines still promises Node >=20 to consumers). Test
+    # only on Node versions the dev tooling itself actually supports;
+    # continue-on-error still left the Node 20 leg's check run reporting
+    # failure, which blocked merges.
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
