@@ -1,12 +1,12 @@
-import {expectType, expectError} from 'tsd';
+import { expectError, expectType } from "tsd";
 import {
-	union,
-	intersection,
-	difference,
-	symmetricDifference,
-	isSubset,
-	isSuperset,
-} from './index.js';
+  difference,
+  intersection,
+  isSubset,
+  isSuperset,
+  symmetricDifference,
+  union,
+} from "./index.js";
 
 const setA = new Set([1, 2, 3]);
 const setB = new Set([2, 3, 4]);
@@ -18,5 +18,5 @@ expectType<Set<number>>(symmetricDifference(setA, setB));
 expectType<boolean>(isSubset(setA, setB));
 expectType<boolean>(isSuperset(setA, setB));
 
-expectError(union(setA, 'not a set'));
-expectError(intersection(setA, 'not a set'));
+expectError(union(setA, "not a set"));
+expectError(intersection(setA, "not a set"));
