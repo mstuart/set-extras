@@ -67,6 +67,14 @@ test("intersection returns a new Set", (t) => {
   t.not(result, a);
 });
 
+test("intersection preserves the first set insertion order", (t) => {
+  const result = intersection(
+    new Set(["a", "b", "c", "d"]),
+    new Set(["c", "a"])
+  );
+  t.deepEqual([...result], ["a", "c"]);
+});
+
 // --- difference ---
 
 test("difference removes elements in second set", (t) => {

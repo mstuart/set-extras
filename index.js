@@ -8,14 +8,9 @@ export function union(setA, setB) {
 }
 
 export function intersection(setA, setB) {
-  // Iterate the smaller set so the number of membership checks is
-  // O(min(|setA|, |setB|)) instead of always O(|setA|). Intersection is
-  // commutative, so the result is identical either way.
-  const [smaller, larger] =
-    setA.size <= setB.size ? [setA, setB] : [setB, setA];
   const result = new Set();
-  for (const item of smaller) {
-    if (larger.has(item)) {
+  for (const item of setA) {
+    if (setB.has(item)) {
       result.add(item);
     }
   }
