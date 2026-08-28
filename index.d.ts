@@ -13,7 +13,7 @@ union(new Set([1, 2]), new Set([2, 3]));
 //=> Set {1, 2, 3}
 ```
 */
-export function union<T>(setA: Set<T>, setB: Set<T>): Set<T>;
+export function union<T>(setA: ReadonlySet<T>, setB: ReadonlySet<T>): Set<T>;
 
 /**
 Create a new Set containing elements present in both sets.
@@ -30,7 +30,10 @@ intersection(new Set([1, 2, 3]), new Set([2, 3, 4]));
 //=> Set {2, 3}
 ```
 */
-export function intersection<T>(setA: Set<T>, setB: Set<T>): Set<T>;
+export function intersection<T>(
+  setA: ReadonlySet<T>,
+  setB: ReadonlySet<T>
+): Set<T>;
 
 /**
 Create a new Set containing elements in setA but not in setB.
@@ -47,7 +50,10 @@ difference(new Set([1, 2, 3]), new Set([2, 3, 4]));
 //=> Set {1}
 ```
 */
-export function difference<T>(setA: Set<T>, setB: Set<T>): Set<T>;
+export function difference<T>(
+  setA: ReadonlySet<T>,
+  setB: ReadonlySet<T>
+): Set<T>;
 
 /**
 Create a new Set containing elements in either set but not both.
@@ -64,7 +70,10 @@ symmetricDifference(new Set([1, 2, 3]), new Set([2, 3, 4]));
 //=> Set {1, 4}
 ```
 */
-export function symmetricDifference<T>(setA: Set<T>, setB: Set<T>): Set<T>;
+export function symmetricDifference<T>(
+  setA: ReadonlySet<T>,
+  setB: ReadonlySet<T>
+): Set<T>;
 
 /**
 Check if all elements of setA are in setB.
@@ -81,7 +90,10 @@ isSubset(new Set([1, 2]), new Set([1, 2, 3]));
 //=> true
 ```
 */
-export function isSubset<T>(setA: Set<T>, setB: Set<T>): boolean;
+export function isSubset<T>(
+  setA: ReadonlySet<T>,
+  setB: ReadonlySet<T>
+): boolean;
 
 /**
 Check if all elements of setB are in setA.
@@ -98,4 +110,7 @@ isSuperset(new Set([1, 2, 3]), new Set([1, 2]));
 //=> true
 ```
 */
-export function isSuperset<T>(setA: Set<T>, setB: Set<T>): boolean;
+export function isSuperset<T>(
+  setA: ReadonlySet<T>,
+  setB: ReadonlySet<T>
+): boolean;
