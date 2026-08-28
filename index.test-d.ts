@@ -8,6 +8,9 @@ import {
   union,
 } from "./index.js";
 
+declare const readonlySet: ReadonlySet<number>;
+expectType<Set<number>>(union(readonlySet, readonlySet));
+
 const setA = new Set([1, 2, 3]);
 const setB = new Set([2, 3, 4]);
 
