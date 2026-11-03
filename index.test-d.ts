@@ -23,3 +23,12 @@ expectType<boolean>(isSuperset(setA, setB));
 
 expectError(union(setA, "not a set"));
 expectError(intersection(setA, "not a set"));
+
+expectType<Set<string | number>>(union(new Set([1]), new Set(["a"])));
+expectType<Set<string | number>>(
+  symmetricDifference(new Set([1]), new Set(["a"]))
+);
+expectType<Set<never>>(intersection(new Set([1]), new Set(["a"])));
+expectType<Set<number>>(difference(new Set([1]), new Set(["a"])));
+expectType<boolean>(isSubset(new Set([1]), new Set(["a"])));
+expectType<boolean>(isSuperset(new Set([1]), new Set(["a"])));
